@@ -1,0 +1,301 @@
+import { getLanguage } from "obsidian";
+
+const en = {
+  // collections & ordering
+  "collection.new": "New collection",
+  "collection.rename": "Rename",
+  "collection.delete": "Delete collection",
+  "collection.confirmDelete": 'Delete "{name}"? Its links go back to My list.',
+  "collection.name": "Name",
+  "collection.namePlaceholder": "Work, School, Recipes…",
+  "collection.save": "Save",
+  "collection.pick": "Move to…",
+  "collection.none": "My list (no collection)",
+  "collection.newItem": "New collection…",
+  "card.moveToCollection": "Move to collection…",
+  "card.moveTop": "Move to top",
+  "card.moveUp": "Move up",
+  "card.moveDown": "Move down",
+  "card.moveBottom": "Move to bottom",
+  "notice.movedTo": "Moved to {name}",
+  "view.sortManual": "Custom order",
+  "view.settings": "Settings",
+
+  // commands & ribbon
+  "cmd.open": "Open",
+  "cmd.addLink": "Save a link…",
+  "cmd.addFromClipboard": "Save link(s) from clipboard",
+  "cmd.retryFailed": "Retry links that failed",
+  "ribbon.open": "Open Visualink",
+
+  // notices
+  "notice.noClipboardLink": "Visualink: no link in the clipboard",
+  "notice.invalidLink": "Visualink: invalid link",
+  "notice.alreadySaved": "Already saved: {title}",
+  "notice.savedOffline": "Saved offline",
+  "notice.savedOfflineMany": "{n} links saved offline",
+  "notice.noPending": "Visualink: no pending links",
+  "notice.notALink": "That doesn't look like a link",
+  "notice.needConnection": "You need a connection for this",
+  "notice.linkCopied": "Link copied",
+  "notice.copiedMarkdown": "Copied as Markdown",
+  "notice.noValidLink": "No valid link found",
+  "notice.linkSaved": "Link saved",
+  "notice.linksSaved": "{n} links saved",
+  "notice.downloadingImages": "Downloading images for {n} cards…",
+  "notice.done": "Done",
+  "notice.copied": "Copied",
+  "notice.exported": "Exported to {path}",
+
+  // embed block
+  "embed.empty": "Visualink: no matching cards.",
+
+  // view
+  "view.addPlaceholder": "Paste a link and press Enter…",
+  "view.offline": "Offline",
+  "view.sectionAll": "My list",
+  "view.sectionPinned": "Pinned",
+  "view.sectionArchive": "Archive",
+  "view.search": "Search",
+  "view.sort": "Sort",
+  "view.sortNewest": "Newest",
+  "view.sortOldest": "Oldest",
+  "view.sortTitle": "Title (A–Z)",
+  "view.sortDomain": "Site",
+  "layout.grid": "Grid",
+  "layout.list": "List",
+  "layout.compact": "Compact",
+  "view.allTags": "All",
+  "view.cardCount": "{n} card",
+  "view.cardCountMany": "{n} cards",
+  "view.pending": " · {n} waiting for metadata",
+  "view.noMatch": "Nothing matches",
+  "view.archiveEmpty": "The archive is empty",
+  "view.listEmpty": "Your list is empty",
+  "view.emptyHint": "Paste a link above, drag it here or press Ctrl+V on this view.",
+
+  // card
+  "card.savedOffline": "Saved offline",
+  "card.readError": "Couldn't read the page",
+  "card.pin": "Pin",
+  "card.unpin": "Unpin",
+  "card.archive": "Archive",
+  "card.unarchive": "Back to list",
+  "card.edit": "Edit",
+  "card.more": "More",
+  "card.open": "Open",
+  "card.copyLink": "Copy link",
+  "card.copyMarkdown": "Copy as Markdown",
+  "card.editMenu": "Edit…",
+  "card.fetchCover": "Fetch cover and info",
+  "card.refetch": "Refresh metadata",
+  "card.delete": "Delete",
+  "card.confirmDelete": 'Delete "{title}"?',
+
+  // modals
+  "modal.addTitle": "Save link to Visualink",
+  "modal.links": "Link(s)",
+  "modal.linksDesc": "You can paste several, one per line.",
+  "modal.tags": "Tags",
+  "modal.tagsDesc": "Separated by commas or spaces.",
+  "modal.tagsPlaceholder": "reading, design",
+  "modal.save": "Save",
+  "modal.cancel": "Cancel",
+  "modal.offlineTitle": "Offline — give it a title",
+  "modal.offlineDesc": "It will be saved as a card without a cover. You can change the title anytime.",
+  "modal.title": "Title",
+  "modal.editTitle": "Edit card",
+  "modal.description": "Description",
+  "modal.note": "Personal note",
+  "modal.image": "Image",
+  "modal.imageDesc": "URL of a cover image (optional).",
+
+  // settings
+  "set.language": "Language",
+  "set.languageAuto": "Same as Obsidian",
+  "set.cacheImages": "Save images in the vault",
+  "set.cacheImagesDesc": "Downloads each link's cover and icon so cards display without internet.",
+  "set.assetsFolder": "Image folder",
+  "set.assetsFolderDesc": "Where downloaded images are stored.",
+  "set.downloadMissing": "Download missing images",
+  "set.downloadMissingDesc": "Saves locally the images of cards that still depend on the internet.",
+  "set.download": "Download",
+  "set.defaultLayout": "Default layout",
+  "set.showDescriptions": "Show descriptions",
+  "set.confirmDelete": "Confirm before deleting",
+  "set.accent": "Accent color",
+  "set.accentDesc": "Leave empty to use your theme's accent color.",
+  "set.accentReset": "Use the theme's color",
+  "set.quickSave": "Quick save from the browser",
+  "set.bookmarklet": "Bookmarklet",
+  "set.bookmarkletDesc": "Create a bookmark in your browser with this code as its address. Click it on any page to save it to Visualink:",
+  "set.copyBookmarklet": "Copy bookmarklet",
+  "set.export": "Export",
+  "set.exportNote": "Export to a note",
+  "set.exportNoteDesc": "Creates a Markdown note with all your links grouped by tag.",
+  "set.untagged": "untagged",
+
+  // metadata
+  "meta.byAuthor": "by {author}",
+  "meta.pdf": "PDF document",
+};
+
+export type StringKey = keyof typeof en;
+
+const es: Record<StringKey, string> = {
+  "collection.new": "Nueva colección",
+  "collection.rename": "Cambiar nombre",
+  "collection.delete": "Eliminar colección",
+  "collection.confirmDelete": '¿Eliminar "{name}"? Sus links vuelven a Mi lista.',
+  "collection.name": "Nombre",
+  "collection.namePlaceholder": "Trabajo, Escuela, Recetas…",
+  "collection.save": "Guardar",
+  "collection.pick": "Mover a…",
+  "collection.none": "Mi lista (sin colección)",
+  "collection.newItem": "Nueva colección…",
+  "card.moveToCollection": "Mover a colección…",
+  "card.moveTop": "Mover al inicio",
+  "card.moveUp": "Mover arriba",
+  "card.moveDown": "Mover abajo",
+  "card.moveBottom": "Mover al final",
+  "notice.movedTo": "Movido a {name}",
+  "view.sortManual": "Orden personalizado",
+  "view.settings": "Ajustes",
+
+  "cmd.open": "Abrir",
+  "cmd.addLink": "Guardar un link…",
+  "cmd.addFromClipboard": "Guardar link(s) del portapapeles",
+  "cmd.retryFailed": "Reintentar links con error",
+  "ribbon.open": "Abrir Visualink",
+
+  "notice.noClipboardLink": "Visualink: no hay un link en el portapapeles",
+  "notice.invalidLink": "Visualink: link inválido",
+  "notice.alreadySaved": "Ya estaba guardado: {title}",
+  "notice.savedOffline": "Guardado sin conexión",
+  "notice.savedOfflineMany": "{n} links guardados sin conexión",
+  "notice.noPending": "Visualink: no hay links pendientes",
+  "notice.notALink": "Eso no parece un link",
+  "notice.needConnection": "Necesitas conexión para esto",
+  "notice.linkCopied": "Link copiado",
+  "notice.copiedMarkdown": "Copiado como Markdown",
+  "notice.noValidLink": "No encontré ningún link válido",
+  "notice.linkSaved": "Link guardado",
+  "notice.linksSaved": "{n} links guardados",
+  "notice.downloadingImages": "Descargando imágenes de {n} tarjetas…",
+  "notice.done": "Listo",
+  "notice.copied": "Copiado",
+  "notice.exported": "Exportado a {path}",
+
+  "embed.empty": "Visualink: no hay tarjetas que coincidan.",
+
+  "view.addPlaceholder": "Pega un link y presiona Enter…",
+  "view.offline": "Sin conexión",
+  "view.sectionAll": "Mi lista",
+  "view.sectionPinned": "Fijados",
+  "view.sectionArchive": "Archivo",
+  "view.search": "Buscar",
+  "view.sort": "Ordenar",
+  "view.sortNewest": "Más recientes",
+  "view.sortOldest": "Más antiguos",
+  "view.sortTitle": "Título (A-Z)",
+  "view.sortDomain": "Sitio",
+  "layout.grid": "Cuadrícula",
+  "layout.list": "Lista",
+  "layout.compact": "Compacto",
+  "view.allTags": "Todas",
+  "view.cardCount": "{n} tarjeta",
+  "view.cardCountMany": "{n} tarjetas",
+  "view.pending": " · {n} esperando metadata",
+  "view.noMatch": "Nada coincide",
+  "view.archiveEmpty": "El archivo está vacío",
+  "view.listEmpty": "Tu lista está vacía",
+  "view.emptyHint": "Pega un link arriba, arrástralo aquí o usa Ctrl+V sobre esta vista.",
+
+  "card.savedOffline": "Guardado sin conexión",
+  "card.readError": "No se pudo leer la página",
+  "card.pin": "Fijar",
+  "card.unpin": "Desfijar",
+  "card.archive": "Archivar",
+  "card.unarchive": "Devolver a la lista",
+  "card.edit": "Editar",
+  "card.more": "Más",
+  "card.open": "Abrir",
+  "card.copyLink": "Copiar link",
+  "card.copyMarkdown": "Copiar como Markdown",
+  "card.editMenu": "Editar…",
+  "card.fetchCover": "Buscar portada e info",
+  "card.refetch": "Volver a buscar metadata",
+  "card.delete": "Eliminar",
+  "card.confirmDelete": '¿Eliminar "{title}"?',
+
+  "modal.addTitle": "Guardar link en Visualink",
+  "modal.links": "Link(s)",
+  "modal.linksDesc": "Puedes pegar varios, uno por línea.",
+  "modal.tags": "Etiquetas",
+  "modal.tagsDesc": "Separadas por coma o espacio.",
+  "modal.tagsPlaceholder": "lectura, diseño",
+  "modal.save": "Guardar",
+  "modal.cancel": "Cancelar",
+  "modal.offlineTitle": "Sin conexión — ponle un título",
+  "modal.offlineDesc": "Se guardará como tarjeta sin portada. Puedes cambiar el título cuando quieras.",
+  "modal.title": "Título",
+  "modal.editTitle": "Editar tarjeta",
+  "modal.description": "Descripción",
+  "modal.note": "Nota personal",
+  "modal.image": "Imagen",
+  "modal.imageDesc": "URL de una imagen para la portada (opcional).",
+
+  "set.language": "Idioma",
+  "set.languageAuto": "Igual que Obsidian",
+  "set.cacheImages": "Guardar imágenes en la bóveda",
+  "set.cacheImagesDesc": "Descarga la portada y el ícono de cada link para que las tarjetas se vean sin Internet.",
+  "set.assetsFolder": "Carpeta de imágenes",
+  "set.assetsFolderDesc": "Dónde se guardan las imágenes descargadas.",
+  "set.downloadMissing": "Descargar imágenes faltantes",
+  "set.downloadMissingDesc": "Guarda localmente las imágenes de tarjetas que todavía dependen de Internet.",
+  "set.download": "Descargar",
+  "set.defaultLayout": "Vista por defecto",
+  "set.showDescriptions": "Mostrar descripciones",
+  "set.confirmDelete": "Confirmar antes de eliminar",
+  "set.accent": "Color de acento",
+  "set.accentDesc": "Vacío = usa el color de acento de tu tema de Obsidian.",
+  "set.accentReset": "Usar el del tema",
+  "set.quickSave": "Guardado rápido desde el navegador",
+  "set.bookmarklet": "Bookmarklet",
+  "set.bookmarkletDesc": "Crea un marcador en tu navegador con este código como dirección. Haz clic en él desde cualquier página y se guarda en Visualink:",
+  "set.copyBookmarklet": "Copiar bookmarklet",
+  "set.export": "Exportar",
+  "set.exportNote": "Exportar a una nota",
+  "set.exportNoteDesc": "Crea una nota Markdown con todos tus links agrupados por etiqueta.",
+  "set.untagged": "sin etiqueta",
+
+  "meta.byAuthor": "por {author}",
+  "meta.pdf": "Documento PDF",
+};
+
+export type LanguageSetting = "auto" | "en" | "es";
+
+/** Shown in their own language, never translated. */
+export const LANGUAGE_NAMES: Record<Exclude<LanguageSetting, "auto">, string> = {
+  en: "English",
+  es: "Español (Latinoamérica)",
+};
+
+let strings: Record<StringKey, string> = en;
+let pageLanguage = "en";
+
+/** "auto" follows Obsidian's language: Spanish if it's set to Spanish, English otherwise. */
+export function setLanguage(lang: LanguageSetting) {
+  pageLanguage = lang === "auto" ? getLanguage() : lang;
+  strings = pageLanguage.startsWith("es") ? es : en;
+}
+
+/** Translated UI string; `{name}` placeholders are filled from `vars`. */
+export function t(key: StringKey, vars: Record<string, string | number> = {}): string {
+  return strings[key].replace(/\{(\w+)\}/g, (m, k: string) => (k in vars ? String(vars[k]) : m));
+}
+
+/** Accept-Language header so fetched pages come back in the user's language when available. */
+export function acceptLanguage(): string {
+  return pageLanguage === "en" ? "en" : `${pageLanguage},en;q=0.8`;
+}

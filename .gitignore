@@ -1,0 +1,6 @@
+node_modules/
+main.js
+*.zip
+data.json
+dist/
+CLAUDE.md

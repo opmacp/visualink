@@ -1,0 +1,10 @@
+{
+  "id": "visualink",
+  "name": "Visualink",
+  "version": "1.0.0",
+  "minAppVersion": "1.13.0",
+  "description": "Save links as light visual cards with their cover, title and description. Sort them into collections, drag to swap, and keep them offline in your vault.",
+  "author": "opmacp",
+  "isDesktopOnly": false,
+  "authorUrl": "https://github.com/opmacp"
+}
